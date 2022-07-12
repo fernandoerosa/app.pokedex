@@ -4,7 +4,7 @@ import 'package:app_pokedex/app/modules/home/home_routes.dart';
 import 'package:app_pokedex/app/modules/home/home_store.dart';
 import 'package:app_pokedex/app/modules/pokemon_menu/pokemon_menu_module.dart';
 import 'package:app_pokedex/app/modules/pokemon_menu/pokemon_menu_routes.dart';
-import 'package:app_pokedex/shared/helper/pokemon_repository.dart';
+import 'package:app_pokedex/shared/helper/repositories/pokemon_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

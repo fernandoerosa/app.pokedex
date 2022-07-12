@@ -1,4 +1,4 @@
-import 'package:app_pokedex/shared/helper/pokemon_repository.dart';
+import 'package:app_pokedex/shared/helper/repositories/pokemon_repository.dart';
 import 'package:app_pokedex/shared/helper/repositories/models/pokemon_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
