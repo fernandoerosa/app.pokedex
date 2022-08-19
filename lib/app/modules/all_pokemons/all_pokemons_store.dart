@@ -1,5 +1,5 @@
-import 'package:app_pokedex/shared/helper/pokemon_repository.dart';
-import 'package:app_pokedex/shared/helper/repositories/models/pokemon_model.dart';
+import 'package:app_pokedex/shared/helper/local_storage/hive_boxes.dart';
+import 'package:app_pokedex/shared/helper/repositories/pokemon_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -9,13 +9,19 @@ class AllPokemonsStore = _AllPokemonsStoreBase with _$AllPokemonsStore;
 
 abstract class _AllPokemonsStoreBase with Store {
   final PokemonRepository _pokemonRepository = Modular.get();
+  final _pokemonBox = HiveBoxes.getPokemons();
 
-  List<PokemonModel>? pokemonList;
+  @observable
+  List? pokemonList;
+  @observable
+  bool? isLoading;
 
+  @action
   Future getAll() async {
-    pokemonList = await _pokemonRepository.getAllPokemons();
-    pokemonList?.forEach((element) {
-      print("==> ${element.name}");
-    });
+    isLoading = true;
+    await _pokemonRepository.getAllPokemons();
+    pokemonList = await _pokemonBox.get(0);
+    print(pokemonList);
+    isLoading = false;
   }
 }

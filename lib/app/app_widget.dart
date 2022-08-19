@@ -11,7 +11,9 @@ class AppWidget extends StatelessWidget {
       routerDelegate: Modular.routerDelegate,
       title: 'Pokedex',
       theme: ThemeData(
-          primarySwatch: Colors.red),
+        brightness: Brightness.dark,
+        primarySwatch: Colors.red,
+      ),
     );
   }
 }
