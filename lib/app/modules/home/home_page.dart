@@ -1,8 +1,9 @@
 import 'package:app_pokedex/shared/helper/custom_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:app_pokedex/app/modules/home/home_store.dart';
+
+import '../all_pokemons/all_pokemons_routes.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -26,15 +27,15 @@ class _HomePageState extends State<HomePage> {
       drawer: const Drawer(),
       body: Column(
         children: [
-          const Text("Escolha seu pokemon!"),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: Padding(
               child: TextField(
                 decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(32)),
-                  labelText: 'Procure o Pokemon',
+                  labelText: 'Search Pokemons',
                 ),
               ),
               padding: const EdgeInsets.all(8.0),
@@ -50,7 +51,9 @@ class _HomePageState extends State<HomePage> {
                     CustomButtom(
                       icon: Icons.catching_pokemon,
                       color: Colors.red,
-                      press: () {},
+                      press: () {
+                        Modular.to.pushNamed(AllPokemonsRoutes.MODULE);
+                      },
                       title: "Pokedex",
                     ),
                     CustomButtom(
@@ -77,7 +80,9 @@ class _HomePageState extends State<HomePage> {
                       title: "Locations",
                     )
                   ],
-                )
+                ),
+                const Text("Watch"),
+                const Divider(color: Colors.white),
               ],
             ),
           )

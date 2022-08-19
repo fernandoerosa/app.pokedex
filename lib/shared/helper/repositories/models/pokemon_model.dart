@@ -1,16 +1,33 @@
 import 'package:app_pokedex/shared/helper/repositories/models/next_evolution.dart';
+import 'package:hive/hive.dart';
 
-class PokemonModel {
+part 'pokemon_model.g.dart';
+
+@HiveType(typeId: 0)
+class PokemonModel extends HiveObject {
+  static const KEY_POKEMON = "KEY_POKEMON";
+
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? num;
+  @HiveField(2)
   String? name;
+  @HiveField(3)
   String? img;
+  @HiveField(4)
   List<String>? type;
+  @HiveField(5)
   String? height;
+  @HiveField(6)
   String? candy;
+  @HiveField(7)
   int? candyCount;
+  @HiveField(8)
   String? egg;
+  @HiveField(9)
   List<String>? weaknesses;
+  @HiveField(10)
   List<NextEvolution>? nextEvolution;
 
   PokemonModel({
