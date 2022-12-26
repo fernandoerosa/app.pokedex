@@ -1,3 +1,4 @@
+import 'package:app_pokedex/app/modules/pokemon_giveaway/pokemon_giveaway_routes.dart';
 import 'package:app_pokedex/shared/helper/custom_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -8,7 +9,7 @@ import '../all_pokemons/all_pokemons_routes.dart';
 class HomePage extends StatefulWidget {
   final String title;
 
-  const HomePage({Key? key, this.title = "Menu"}) : super(key: key);
+  const HomePage({Key? key, this.title = "Home Page"}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
+        title: Text(widget.title),
       ),
       drawer: const Drawer(),
       body: Column(
@@ -81,8 +83,18 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-                const Text("Watch"),
                 const Divider(color: Colors.white),
+                CustomButtom(
+                  width: 250,
+                  height: 100,
+                  textSize: 24,
+                  icon: Icons.star,
+                  color: Colors.purple,
+                  press: () {
+                    Modular.to.pushNamed(PokemonGiveawayRoutes.MODULE);
+                  },
+                  title: "Daily Pokemon!",
+                )
               ],
             ),
           )

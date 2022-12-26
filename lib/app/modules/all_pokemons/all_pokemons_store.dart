@@ -21,7 +21,7 @@ abstract class _AllPokemonsStoreBase with Store {
     isLoading = true;
     await _pokemonRepository.getAllPokemons();
     pokemonList = await _pokemonBox.get(0);
-    print(pokemonList);
+    print(pokemonList!.length);
     isLoading = false;
   }
 }

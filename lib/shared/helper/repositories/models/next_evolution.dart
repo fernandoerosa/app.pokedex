@@ -4,6 +4,7 @@ part 'next_evolution.g.dart';
 
 @HiveType(typeId: 1)
 class NextEvolution extends HiveObject {
+
   @HiveField(0)
   String? num;
   @HiveField(1)
