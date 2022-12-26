@@ -9,7 +9,7 @@ import '../../../shared/helper/repositories/models/pokemon_model.dart';
 class AllPokemonsPage extends StatefulWidget {
   final String title;
 
-  const AllPokemonsPage({Key? key, this.title = 'AllPokemonsPage'})
+  const AllPokemonsPage({Key? key, this.title = 'Pokemon Wiki'})
       : super(key: key);
 
   @override
@@ -42,17 +42,27 @@ class AllPokemonsPageState extends State<AllPokemonsPage> {
           } else {
             return Scrollbar(
 
-              child: ListView.builder(
+              child: GridView.builder(
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(8.0),
                 itemCount: store.pokemonList!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  if (index == store.pokemonList!.length) store.isLoading = false;
+                  if (index == store.pokemonList!.length + 1) store.isLoading = false;
                   PokemonModel pokemonModel = store.pokemonList![index];
                   return Card(
-                    child: Image.network(pokemonModel.img!),
+                    child: Column(
+                      children: [
+                        Text(pokemonModel.name!),
+                        Image.network(pokemonModel.img!),
+                        Text(pokemonModel.type![0]),
+                      ],
+                    ),
                   );
-                },
+                }, gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 5.0,
+                mainAxisSpacing: 5.0,
+              ),
               ),
             );
           }

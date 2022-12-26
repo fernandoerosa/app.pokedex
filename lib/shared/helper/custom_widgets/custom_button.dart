@@ -5,6 +5,9 @@ class CustomButtom extends StatefulWidget {
   final Color? color;
   final GestureTapCallback? press;
   final IconData? icon;
+  final double? width;
+  final double? height;
+  final double? textSize;
 
   CustomButtom({
     Key? key,
@@ -12,6 +15,9 @@ class CustomButtom extends StatefulWidget {
     this.color,
     this.press,
     required this.icon,
+    this.width,
+    this.height,
+    this.textSize,
   }) : super(key: key);
 
   @override
@@ -24,12 +30,12 @@ class _CustomButtomState extends State<CustomButtom> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        width: 180,
-        height: 70,
+        width: widget.width ?? 180,
+        height: widget.height ?? 70,
         child: ElevatedButton.icon(
           icon: Icon(widget.icon!),
           onPressed: widget.press!,
-          label: Text(widget.title!),
+          label: Text(widget.title!, style: TextStyle(fontSize: widget.textSize),),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(widget.color),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
