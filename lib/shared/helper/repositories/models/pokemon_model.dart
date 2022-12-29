@@ -6,6 +6,7 @@ part 'pokemon_model.g.dart';
 @HiveType(typeId: 0)
 class PokemonModel extends HiveObject {
   static const KEY_POKEMON = "KEY_POKEMON";
+  static const KEY_MY_POKEMON = "KEY_MY_POKEMON";
 
   @HiveField(0)
   int? id;
@@ -70,6 +71,37 @@ class PokemonModel extends HiveObject {
     img = json['img'];
     type = json['type'].cast<String>();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PokemonModel &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          num == other.num &&
+          name == other.name &&
+          img == other.img &&
+          type == other.type &&
+          height == other.height &&
+          candy == other.candy &&
+          candyCount == other.candyCount &&
+          egg == other.egg &&
+          weaknesses == other.weaknesses &&
+          nextEvolution == other.nextEvolution;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      num.hashCode ^
+      name.hashCode ^
+      img.hashCode ^
+      type.hashCode ^
+      height.hashCode ^
+      candy.hashCode ^
+      candyCount.hashCode ^
+      egg.hashCode ^
+      weaknesses.hashCode ^
+      nextEvolution.hashCode;
 
   @override
   String toString() {

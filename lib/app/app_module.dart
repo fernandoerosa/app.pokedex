@@ -1,7 +1,9 @@
 import 'package:app_pokedex/app/modules/all_pokemons/all_pokemons_routes.dart';
-import 'package:app_pokedex/app/modules/all_pokemons/allpokemons_module.dart';
+import 'package:app_pokedex/app/modules/all_pokemons/all_pokemons_module.dart';
 import 'package:app_pokedex/app/modules/home/home_routes.dart';
 import 'package:app_pokedex/app/modules/home/home_store.dart';
+import 'package:app_pokedex/app/modules/pokemon_detail/pokemon_detail_module.dart';
+import 'package:app_pokedex/app/modules/pokemon_detail/pokemon_detail_routes.dart';
 import 'package:app_pokedex/app/modules/pokemon_giveaway/pokemon_giveaway_module.dart';
 import 'package:app_pokedex/app/modules/pokemon_giveaway/pokemon_giveaway_routes.dart';
 import 'package:app_pokedex/app/modules/pokemon_menu/pokemon_menu_module.dart';
@@ -24,7 +26,8 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ModuleRoute(HomeRoutes.ROOT, module: HomeModule()),
     ModuleRoute(PokemonMenuRoutes.MODULE, module: PokemonMenuModule()),
-    ModuleRoute(AllPokemonsRoutes.MODULE, module: AllpokemonsModule()),
+    ModuleRoute(AllPokemonsRoutes.MODULE, module: AllPokemonsModule()),
     ModuleRoute(PokemonGiveawayRoutes.MODULE, module: PokemonGiveawayModule()),
+    ModuleRoute(PokemonDetailRoutes.MODULE, module: PokemonDetailModule()),
   ];
 }

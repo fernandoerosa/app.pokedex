@@ -18,6 +18,7 @@ void main() async {
   Hive.registerAdapter(NextEvolutionAdapter()); //HiveType 0
   Hive.registerAdapter(PokemonModelAdapter()); //HiveType 1
   Hive.openBox(PokemonModel.KEY_POKEMON);
+  Hive.openBox(PokemonModel.KEY_MY_POKEMON);
 
   runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }

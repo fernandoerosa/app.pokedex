@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../shared/helper/repositories/models/pokemon_model.dart';
+import 'all_pokemons_routes.dart';
 
 class AllPokemonsPage extends StatefulWidget {
   final String title;
@@ -49,13 +50,18 @@ class AllPokemonsPageState extends State<AllPokemonsPage> {
                 itemBuilder: (BuildContext context, int index) {
                   if (index == store.pokemonList!.length + 1) store.isLoading = false;
                   PokemonModel pokemonModel = store.pokemonList![index];
-                  return Card(
-                    child: Column(
-                      children: [
-                        Text(pokemonModel.name!),
-                        Image.network(pokemonModel.img!),
-                        Text(pokemonModel.type![0]),
-                      ],
+                  return InkWell(
+                    onTap: () {
+                      Modular.to.pushNamed(AllPokemonsRoutes.POKEMON_DETAIL, arguments: pokemonModel);
+                    },
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Text(pokemonModel.name!),
+                          Image.network(pokemonModel.img!),
+                          Text(pokemonModel.type![0]),
+                        ],
+                      ),
                     ),
                   );
                 }, gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
